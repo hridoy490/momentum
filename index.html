@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMT Finance Presale: Guaranteed Allocation Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .timer-box {
+            background: linear-gradient(145deg, #1f2937, #374151);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 2px 4px 0 rgba(255, 255, 255, 0.05);
+        }
+        .timer-unit {
+            font-variant-numeric: tabular-nums;
+        }
+        .tweet-card {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: scale(0.95);
+            opacity: 0;
+            display: none;
+            position: absolute;
+            width: 100%;
+        }
+        .tweet-card.active {
+            transform: scale(1);
+            opacity: 1;
+            display: block;
+            position: relative;
+        }
+        .nav-button {
+            transition: background-color 0.2s ease;
+        }
+        .nav-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .cta-button {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(14, 116, 144, 0.4);
+        }
+    </style>
+    <!-- Chosen Palette: Warm Harmony (Slate Gray, Cyan Accent, Off-White Background) -->
+    <!-- Application Structure Plan: A top-down, single-page marketing funnel. It starts with a high-urgency hero section featuring a countdown timer to immediately capture attention. This is followed by quick-glance key metrics, a clear "How-To" guide for the UGC challenge, an interactive tweet showcase for social proof, and a final CTA. This structure was chosen to convert the fragmented, high-energy tweets into a clear, compelling, and actionable user journey that drives users towards the main goal: submitting to the UGC challenge before the deadline. -->
+    <!-- Visualization & Content Choices: Countdown Timer (Goal: Urgency, Method: JS setInterval, Justification: Visually represents the core deadline message). Key Info Cards (Goal: Inform, Method: Styled HTML/Tailwind, Justification: Scannable highlights). How-To Guide (Goal: Organize Action, Method: Styled HTML Steps, Justification: Simplifies the participation process). Tweet Carousel (Goal: Social Proof, Method: JS-powered interactive slider, Justification: Presents source material engagingly without a text wall). No charts were used as the source material is qualitative and promotional, lacking quantifiable data for visualization. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-4">
+                <span class="text-cyan-600">Guaranteed</span> $MMT Presale Allocation
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto">
+                The clock is ticking on the @MMTFinance presale opportunity on @buidlpad. Your contribution to the community via the UGC Squad Challenge is your direct path to a guaranteed spot.
+            </p>
+        </header>
+
+        <section id="countdown-section" class="mb-12 md:mb-20">
+            <div class="max-w-4xl mx-auto timer-box rounded-2xl p-6 md:p-10 text-white">
+                <h3 class="text-2xl md:text-3xl font-bold text-center mb-6 text-cyan-300">Final Window for Guaranteed Access Closes In:</h3>
+                <div id="countdown" class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-8 text-center">
+                    <div>
+                        <div id="days" class="text-4xl md:text-7xl font-black timer-unit">00</div>
+                        <div class="text-sm md:text-base uppercase tracking-wider text-slate-300">Days</div>
+                    </div>
+                    <div>
+                        <div id="hours" class="text-4xl md:text-7xl font-black timer-unit">00</div>
+                        <div class="text-sm md:text-base uppercase tracking-wider text-slate-300">Hours</div>
+                    </div>
+                    <div>
+                        <div id="minutes" class="text-4xl md:text-7xl font-black timer-unit">00</div>
+                        <div class="text-sm md:text-base uppercase tracking-wider text-slate-300">Minutes</div>
+                    </div>
+                    <div>
+                        <div id="seconds" class="text-4xl md:text-7xl font-black timer-unit">00</div>
+                        <div class="text-sm md:text-base uppercase tracking-wider text-slate-300">Seconds</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="opportunity-section" class="text-center mb-12 md:mb-20">
+             <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">The Opportunity at a Glance</h2>
+             <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-10">Buidlpad launchpads have a history of high performance. The $MMT presale is the next major event, offering a unique, community-first allocation model. Here are the key details.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Project</h3>
+                    <p class="text-slate-600">@MMTFinance ($MMT), Sui's leading DEX.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                    <div class="text-4xl mb-4">✅</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Allocation Type</h3>
+                    <p class="text-slate-600">Guaranteed spots for UGC Squad Challenge participants.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Platform</h3>
+                    <p class="text-slate-600">The highly successful @buidlpad launchpad.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-to-section" class="bg-white rounded-2xl p-8 md:p-12 shadow-xl border border-slate-200 mb-12 md:mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-4">How to Secure Your Guaranteed Spot</h2>
+            <p class="text-lg text-slate-600 max-w-3xl mx-auto text-center mb-10">Don't rely on luck. Follow these simple steps to earn your allocation by contributing to the @MMTFinance ecosystem through the UGC Squad Challenge.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-6xl mx-auto">
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-cyan-100 text-cyan-700 rounded-full text-2xl font-bold mb-4">1</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Create Content</h3>
+                    <p class="text-slate-600">Produce original content about the Momentum Finance ecosystem. This can be a Twitter thread, video, article, or high-quality graphic.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-cyan-100 text-cyan-700 rounded-full text-2xl font-bold mb-4">2</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Submit Your Entry</h3>
+                    <p class="text-slate-600">Submit your work through the official Buidlpad portal before the deadline. Ensure you tag @MMTFinance and @buidlpad in your posts.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center justify-center w-16 h-16 bg-cyan-100 text-cyan-700 rounded-full text-2xl font-bold mb-4">3</div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Get Rewarded</h3>
+                    <p class="text-slate-600">Successful submissions will grant you priority access and a guaranteed allocation for the $MMT token presale.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tweets-section" class="mb-12 md:mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-4">Community Buzz & Social Proof</h2>
+             <p class="text-lg text-slate-600 max-w-3xl mx-auto text-center mb-10">The community is already buzzing with excitement. See the latest announcements and feel the momentum directly from the source.</p>
+            <div class="max-w-2xl mx-auto relative">
+                <div id="tweet-container" class="relative h-80 sm:h-72 md:h-64">
+                </div>
+                <button id="prev-tweet" class="absolute top-1/2 -left-4 md:-left-12 transform -translate-y-1/2 bg-slate-800 text-white rounded-full p-3 shadow-lg nav-button focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                </button>
+                <button id="next-tweet" class="absolute top-1/2 -right-4 md:-right-12 transform -translate-y-1/2 bg-slate-800 text-white rounded-full p-3 shadow-lg nav-button focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-opacity-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </button>
+            </div>
+        </section>
+
+        <footer class="text-center bg-gray-900 text-white rounded-2xl p-8 md:p-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Your Final Call to Action</h2>
+            <p class="text-lg text-slate-300 max-w-3xl mx-auto mb-8">The opportunity for guaranteed allocation is finite. The deadline is absolute. Submit your creative work to the UGC Squad Challenge now and secure your place in the next chapter of DeFi on Sui.</p>
+            <a href="https://buidlpad.com/projects/momentum" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-cyan-600 text-white font-bold text-lg px-10 py-4 rounded-xl shadow-lg">
+                Submit to UGC Challenge & Get Allocation
+            </a>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdownElement = document.getElementById('countdown');
+            const daysEl = document.getElementById('days');
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            
+            const deadline = new Date('2025-10-23T00:00:00Z').getTime();
+
+            const updateCountdown = () => {
+                const now = new Date().getTime();
+                const distance = deadline - now;
+
+                if (distance < 0) {
+                    countdownElement.innerHTML = '<div class="col-span-full text-3xl md:text-5xl font-bold text-red-400">The Allocation Window has Closed.</div>';
+                    clearInterval(interval);
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                daysEl.textContent = String(days).padStart(2, '0');
+                hoursEl.textContent = String(hours).padStart(2, '0');
+                minutesEl.textContent = String(minutes).padStart(2, '0');
+                secondsEl.textContent = String(seconds).padStart(2, '0');
+            };
+
+            const interval = setInterval(updateCountdown, 1000);
+            updateCountdown();
+
+            const tweets = [
+                { handle: '@MMTFinance', text: "🚨 **48 HOURS LEFT!** 🚨 The guaranteed allocation window for the highly anticipated @MMTFinance presale on @buidlpad is closing. If you want in on the $MMT momentum, the clock is ticking! Don't look back with regret." },
+                { handle: '@MMTFinance', text: "WANT GUARANTEED $MMT ALLOCATION? Stop farming and start creating! The quickest way into the @MMTFinance presale on @buidlpad is through the **UGC Squad Challenge**." },
+                { handle: '@Buidlpad', text: "@Buidlpad is on fire, and **Momentum ($MMT)** is next! You have less than 3 days to secure your allocation. Don't rely on luck—the UGC Squad Challenge is your **guaranteed ticket**." },
+                { handle: '@MMTFinance', text: "Your mission: 1. Join the UGC Squad. 2. Secure **Guaranteed Allocation** for $MMT. 3. Submit BEFORE the 48-hour deadline! It's that simple." },
+                { handle: '@MMTFinance', text: "How are YOU securing your $MMT allocation on @buidlpad? 🤔 With less than 3 days until guaranteed access via the UGC Squad Challenge closes, this is the final push." },
+                { handle: '@MMTFinance', text: "$MMT Presale Checklist (48 Hours Left!): ✅ Project: @MMTFinance ✅ Platform: @buidlpad ✅ Guaranteed Access: UGC Squad Challenge ✅ Deadline: T-minus 48 hours. Don't miss the next Buidlpad gem! 💎" },
+                { handle: '@MMTFinance', text: "Only **48 HOURS** stand between you and a guaranteed spot in the @MMTFinance presale. The fastest, most reliable path to allocation is through the UGC Squad. Final call for submissions! 🔔" },
+                { handle: '@MMTFinance', text: "Attention builders and content creators! @MMTFinance & @buidlpad are rewarding community engagement with **Guaranteed Allocation**. The submission window is closing." },
+                { handle: '@MMTFinance', text: "REMINDER: Less than 3 days remain for the **@MMTFinance UGC Squad Challenge** submissions. If you are looking for a sure-fire way to get allocation... this is it." },
+                { handle: '@MMTFinance', text: "FINAL COUNTDOWN: Allocation is disappearing. Only 48 hours to secure your **Guaranteed Spot** in the @MMTFinance presale via the $MMT UGC Squad Challenge!" },
+                { handle: '@MMTFinance', text: "Tired of lottery-style presales? @MMTFinance on @buidlpad is offering **GUARANTEED ALLOCATION** via the UGC Squad Challenge. Your effort = your access." },
+                { handle: '@Buidlpad', text: "🚨 **3 DAYS! 3 DAYS! 3 DAYS!** 🚨 That's all the time left to enter the $MMT UGC Squad Challenge and lock in your presale allocation. Stop waiting and start submitting!" },
+                { handle: '@MMTFinance', text: "Calling all content kings and queens! 👑 Your creativity pays. The fastest path to $MMT presale allocation on @buidlpad is submitting to the UGC Squad Challenge." },
+                { handle: '@MMTFinance', text: "This is the **FINAL WARNING!** Allocation for the @MMTFinance presale through the UGC Squad Challenge closes soon. Don't let the next big @Buidlpad success story be one you only watch from the sidelines." }
+            ];
+
+            let currentTweetIndex = 0;
+            const tweetContainer = document.getElementById('tweet-container');
+            const prevBtn = document.getElementById('prev-tweet');
+            const nextBtn = document.getElementById('next-tweet');
+
+            function renderTweet() {
+                tweetContainer.innerHTML = '';
+                const tweet = tweets[currentTweetIndex];
+                const tweetEl = document.createElement('div');
+                tweetEl.className = 'tweet-card bg-white p-6 rounded-xl shadow-lg border border-slate-200';
+                
+                let tweetText = tweet.text.replace(/\*\*(.*?)\*\*/g, '<strong class="text-slate-900">$1</strong>');
+                tweetText = tweetText.replace(/🚨/g, '&#x1F6A8;').replace(/💎/g, '&#x1F48E;').replace(/👑/g, '&#x1F451;').replace(/🔔/g, '&#x1F514;');
+
+                tweetEl.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-white font-bold text-xl">${tweet.handle.charAt(1)}</div>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-slate-900">${tweet.handle}</h4>
+                            <p class="text-slate-600 mt-1">${tweetText}</p>
+                        </div>
+                    </div>
+                `;
+                tweetContainer.appendChild(tweetEl);
+
+                setTimeout(() => {
+                    tweetEl.classList.add('active');
+                }, 50);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentTweetIndex = (currentTweetIndex - 1 + tweets.length) % tweets.length;
+                renderTweet();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentTweetIndex = (currentTweetIndex + 1) % tweets.length;
+                renderTweet();
+            });
+
+            renderTweet();
+        });
+    </script>
+</body>
+</html>
